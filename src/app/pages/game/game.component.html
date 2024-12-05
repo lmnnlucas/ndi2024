@@ -1,1 +1,5 @@
 <p>game works!</p>
+<button (click)="openPopUp('test.json')">Bouton</button>
+<button (click)="openPopUp('test1.json')">Bouton1</button>
+
+<popup [content]="this.jsonContent"></popup>

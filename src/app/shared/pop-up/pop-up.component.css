@@ -1,0 +1,36 @@
+/* Fond noir semi-transparent derrière la popup */
+.popup-backdrop {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: rgba(0, 0, 0, 0.5);
+  z-index: 10;
+  display: none;
+  transition: opacity 0.3s ease-in-out;
+}
+
+.popup-backdrop.show-backdrop {
+  display: block; 
+  opacity: 1;
+}
+
+.popup {
+  position: fixed;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  background: white;
+  padding: 20px;
+  border-radius: 8px;
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+  z-index: 20;
+  display: none; 
+  transition: opacity 0.3s ease-in-out;
+}
+
+.popup.show-popup {
+  display: block;
+  opacity: 1;
+}
