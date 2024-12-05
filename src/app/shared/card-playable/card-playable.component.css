@@ -1,0 +1,119 @@
+/* Styles globaux */
+.card {
+    width: 200px;
+    height: 200px;
+    border-radius: 15px;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    position: relative;
+    overflow: hidden;
+  }
+
+/* Face de la carte */
+.card-face {
+    width: 100%;
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: space-between;
+    position: relative;
+  }
+
+/* Dos de la carte */
+.card-back {
+    width: 100%;
+    height: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background-color: #5FC2BA; /* Couleur de fond du dos */
+    border-radius: 15px;
+  }
+
+/* Fonds dynamiques */
+.background-1 {
+    background-color: #ffadad;
+}
+
+.background-2 {
+    background-color: #ffd6a5;
+}
+
+.background-3 {
+    background-color: #fdffb6;
+}
+
+.background-4 {
+    background-color: #caffbf;
+}
+
+.background-5 {
+    background-color: #9bf6ff;
+}
+
+.background-6 {
+    background-color: #a0c4ff;
+}
+
+.background-7 {
+    background-color: #bdb2ff;
+}
+
+.background-8 {
+    background-color: #ffc6ff;
+}
+
+.icons {
+    position: absolute;
+    top: 10px;
+    left: 10px;
+}
+
+.icon-image {
+    width: 30px;
+    height: 30px;
+    object-fit: contain; 
+}
+
+/* Conteneur pour l'image */
+.image-container {
+    position: absolute; /* Position absolue pour le placer au centre */
+    top: 45%; /* Centrage vertical */
+    left: 50%; /* Centrage horizontal */
+    transform: translate(-50%, -50%); /* Déplacement du cercle pour centrer exactement */
+    width: 150px;
+    height: 150px;
+    background-color: white;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    overflow: hidden;
+    border: 2px solid #ddd;
+  }
+  
+.image-container img {
+    width: 80%;
+    height: 80%;
+    object-fit: cover;
+    border-radius: 50%;
+}
+
+.back-image {
+    width: 60%;
+    height: 60%;
+    object-fit: contain;
+  }
+
+  /* Titre sous l'image */
+.card-title {
+    margin-top: 78%; /* Espacement entre l'image et le titre */
+    font-size: 16px;
+    text-align: center;
+    color: #333;
+  }
+  
