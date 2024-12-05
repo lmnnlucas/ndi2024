@@ -1,0 +1,48 @@
+.memory-game {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 10px;
+    justify-items: center;
+  }
+  
+  .card {
+    width: 80px;
+    height: 100px;
+    perspective: 1000px;
+    cursor: pointer;
+  }
+  
+  .card.flipped .card-inner {
+    transform: rotateY(180deg);
+  }
+  
+  .card-inner {
+    width: 100%;
+    height: 100%;
+    transition: transform 0.5s;
+    transform-style: preserve-3d;
+    position: relative;
+  }
+  
+  .card-front,
+  .card-back {
+    width: 100%;
+    height: 100%;
+    position: absolute;
+    backface-visibility: hidden;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 2rem;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+  }
+  
+  .card-front {
+    background: #eee;
+  }
+  
+  .card-back {
+    background: #f9f9f9;
+    transform: rotateY(180deg);
+  }

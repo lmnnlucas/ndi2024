@@ -1,1 +1,19 @@
-<p>game works!</p>
+<div class="memory-game">
+    <div
+      *ngFor="let card of cards"
+      class="card"
+      [class.flipped]="card.isFlipped || card.isMatched"
+      (click)="onCardClick(card)"
+    >
+      <div class="card-inner">
+        <div class="card-front">
+          <!-- Affiche le dos de la carte -->
+          ❓
+        </div>
+        <div class="card-back">
+          <!-- Affiche la valeur de la carte -->
+          {{ card.value }}
+        </div>
+      </div>
+    </div>
+  </div>
