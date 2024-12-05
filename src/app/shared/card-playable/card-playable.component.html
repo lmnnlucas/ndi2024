@@ -1,0 +1,20 @@
+<div class="card">
+    <!-- Si la carte est de face -->
+    <div *ngIf="isFaceUp" class="card-face" [ngClass]="getBackgroundClass()">
+      <div class="icons">
+        <img [src]="getIconUrl()" alt="Icône associée" class="icon-image">
+      </div>
+      <div class="image-container">
+        <img src="https://via.placeholder.com/100" alt="Image principale de la carte">
+      </div>
+      <div class="card-title">
+        <p>Titre</p>
+      </div>
+    </div>
+  
+    <!-- Si la carte est de dos -->
+    <div *ngIf="!isFaceUp" class="card-back">
+      <img [src]="getBackImageUrl()" alt="Dos de la carte" class="back-image">
+    </div>
+  </div>
+  
