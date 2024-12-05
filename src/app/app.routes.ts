@@ -3,6 +3,6 @@ import { GameComponent } from './pages/game/game.component';
 import { HomeComponent } from './pages/home/home.component';
 
 export const routes: Routes = [
-    {path: '/jeu', component: GameComponent},
+    {path: 'jeu', component: GameComponent},
     {path: '**', component: HomeComponent}
 ];
