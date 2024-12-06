@@ -26,6 +26,16 @@ jobs:
           key: ${{ secrets.sshkey }}
           port: 22
           script: |
+            docker stop NDI
+            
+      - name: Docker delete container
+        uses: appleboy/ssh-action@v1.2.0
+        with:
+          host: 46.101.135.20
+          username: root
+          key: ${{ secrets.sshkey }}
+          port: 22
+          script: |
             docker rm NDI
 
       - name: Docker build image
