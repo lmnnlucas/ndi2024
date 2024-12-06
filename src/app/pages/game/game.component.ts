@@ -32,9 +32,9 @@ export class GameComponent implements OnInit {
         id: index,
         isFlipped: false,
         isMatched: false,
-        variant: index < 8 ? 'a' : 'b', // Si l'index est <= 8, 'a', sinon 'b'
+        variant: index < 8 ? 'b' : 'a', // Si l'index est <= 8, 'a', sinon 'b'
         background : value
-      }));
+      } as Card ));
 
     this.cards = this.shuffle(deck);
   }
