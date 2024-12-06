@@ -1,19 +1,5 @@
-<div class="memory-game">
-    <div
-      *ngFor="let card of cards"
-      class="card"
-      [class.flipped]="card.isFlipped || card.isMatched"
-      (click)="onCardClick(card)"
-    >
-      <div class="card-inner">
-        <div class="card-front">
-          <!-- Affiche le dos de la carte -->
-          ❓
-        </div>
-        <div class="card-back">
-          <!-- Affiche la valeur de la carte -->
-          {{ card.value }}
-        </div>
-      </div>
-    </div>
-  </div>
+<p>game works!</p>
+<button (click)="openPopUp('test.json')">Bouton</button>
+<button (click)="openPopUp('test1.json')">Bouton1</button>
+
+<popup [content]="this.jsonContent"></popup>

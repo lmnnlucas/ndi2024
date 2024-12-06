@@ -1,18 +1,24 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, ViewChild } from '@angular/core';
 import { Card } from '../../models/card.model'; // Assurez-vous d'avoir défini ce modèle
 import { CommonModule } from '@angular/common';
+import { PopupComponent } from '../../shared/pop-up/pop-up.component'; 
+import { JsonDataService } from '../../shared/json-data/json-data.service';
 
 @Component({
   selector: 'app-game',
   templateUrl: './game.component.html',
   standalone: true,
   styleUrls: ['./game.component.css'],
-  imports: [CommonModule]
+  imports: [CommonModule , PopupComponent]
 })
 export class GameComponent implements OnInit {
+  @ViewChild(PopupComponent) popup!: PopupComponent;
+  jsonContent: any;
   cards: Card[] = [];
   flippedCards: Card[] = [];
   isProcessing: boolean = false;
+
+  constructor(private jsonService: JsonDataService) {}
 
   ngOnInit() {
     this.initializeGame();
@@ -65,5 +71,11 @@ export class GameComponent implements OnInit {
       this.flippedCards = [];
       this.isProcessing = false;
     }, 1000);
+  }
+  openPopUp(file: string) {
+    this.jsonService.loadData(file).subscribe((data) => {
+      this.jsonContent = data; 
+      this.popup.openPopup();
+    });
   }
 }
