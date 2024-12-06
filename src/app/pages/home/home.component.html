@@ -4,8 +4,11 @@
       <button routerLink='/jeu'>Jouer en solo</button>
       <button routerLink='/ia'>Jouer contre l'IA</button>
       <button routerLink='/versus'>Jouer en double</button>
+      <label>
+        <input type="checkbox" [(ngModel)]="isPixelMode" (change)="onCheckboxChange()" />
+        Mode Pixelisé
+      </label>
       <button routerLink='/infos'>Info</button>
     </div>
-    <div class="bande"></div>
-  </main>
+</main>
   

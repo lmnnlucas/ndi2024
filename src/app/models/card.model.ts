@@ -4,5 +4,6 @@ export interface Card {
     isMatched: boolean;   // Carte déjà trouvée
     variant : 'a' | 'b'; //
     background : number;
+    pixel : boolean;
   }
   

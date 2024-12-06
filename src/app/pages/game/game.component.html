@@ -1,14 +1,15 @@
-<!-- GameComponent Template -->
 <div class="memory-game">
   <div *ngFor="let card of cards" class="card-container">
     <app-card-playable
       [variant]="card.variant"
       [isFaceUp]="card.isFlipped"
       [backgroundType]="card.background"
+      [pixel]="card.pixel"
       (click)="onCardClick(card)">
     </app-card-playable>
   </div>
   <button routerLink='/'>Retour</button>
 </div>
 
-<popup [content]="popupContent"></popup> <!-- Affichage de la pop-up -->
+<!-- Pop-up d'information pour les matchs trouvés -->
+<popup [content]="popupContent"></popup> 
