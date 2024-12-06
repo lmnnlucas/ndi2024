@@ -1,0 +1,14 @@
+<div class="popup-backdrop" [class.show-backdrop]="isVisible" (click)="closePopup()"></div>
+<div class="popup" [class.show-popup]="isVisible">
+  <h2>{{ content?.title ?? 'Titre par défaut' }}</h2>
+
+  <div *ngIf="content">
+    <p>{{ content?.text ?? 'Texte par défaut : Aucune information disponible.' }}</p>
+  </div>
+
+  <div *ngIf="!content">
+    <p>Pas de contenu disponible.</p>
+  </div>
+
+  <button (click)="closePopup()">Fermer</button>
+</div>
