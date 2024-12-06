@@ -15,6 +15,7 @@ import { JsonDataService } from '../../shared/json-data/json-data.service';
 export class IAComponent {
   @ViewChild(PopupComponent) popup!: PopupComponent;
   jsonContent: any;
+  ia_tab : Card[] = [];
   player1Points: number = 0; // Exemple de points
   player2Points: number = 0; // Exemple de points
   activePlayer: number = 1; // 1 ou 2 pour indiquer le joueur actif
@@ -49,12 +50,7 @@ export class IAComponent {
   onCardClick(card: Card) {
     if (this.isProcessing || card.isFlipped || card.isMatched || (this.activePlayer == 2)) return;
 
-    card.isFlipped = true;
-    this.flippedCards.push(card);
-
-    if (this.flippedCards.length === 2) {
-      this.checkMatch();
-    }
+    this.flip_card(card);
   }
 
   checkMatch() {
@@ -71,6 +67,8 @@ export class IAComponent {
       }
       card1.isMatched = true;
       card2.isMatched = true;
+      this.erase_of_ia(card1);
+      this.erase_of_ia(card2);
     } else {
       setTimeout(() => {
         card1.isFlipped = false;
@@ -97,25 +95,79 @@ export class IAComponent {
     if (end == true){
       return;
     }
+    for (let card1 of this.ia_tab){
+      for (let card2 of this.ia_tab){
+        if (card1 != card2 && card1.background === card2.background){
+          this.IA_as_a_strat(card1, card2);
+          return;
+        }
+      }
+    }
     setTimeout(() => {
       let card = null;
       do {
       const randomIndex = Math.floor(Math.random() * this.cards.length);
       card = this.cards[randomIndex];
       } while (card.isMatched || card.isFlipped );
-      card.isFlipped = true;
-      this.flippedCards.push(card);
+      this.flip_card(card);
       setTimeout(() => {
         do {
           const randomIndex = Math.floor(Math.random() * this.cards.length);
           card = this.cards[randomIndex];
           } while (card.isMatched || card.isFlipped );
-          card.isFlipped = true;
-          this.flippedCards.push(card);
-          this.checkMatch();
+          this.flip_card(card);
       }, 1000); // Attente avant de retourner les cartes
     }, 2000); // Attente avant de retourner les cartes
     return;
+  }
+
+  IA_as_a_strat(card1 :Card , card2 :Card){
+    console.log("strat");
+    setTimeout(() => {
+      this.flip_card(card1);
+      setTimeout(() => {
+          this.flip_card(card2);
+      }, 1000); // Attente avant de retourner les cartes
+    }, 2000); // Attente avant de retourner les cartes
+  }
+
+  flip_card(card : Card){
+    card.isFlipped = true;
+    this.flippedCards.push(card);
+    if (Math.random() > 0.1){
+      if (!this.is_in_ia(card)){
+        this.ia_tab.push(card);
+        console.log(this.ia_tab);
+      }
+    }
+    if (this.flippedCards.length === 2) {
+      this.checkMatch();
+    }
+  }
+
+  erase_of_ia(card : Card){
+    if (this.is_in_ia(card)){
+      const index = this.ia_tab.findIndex(
+        card0 =>
+          card0.background === card.background &&
+          card0.variant === card.variant 
+      );
+  
+      if (index !== -1) {
+        this.ia_tab.splice(index, 1); // Supprime l'élément du tableau
+        console.log("erased");
+      }
+    }
+  }
+
+  is_in_ia(card : Card){
+    let answer = false;
+    for (let c of this.ia_tab ){
+      if (c === card) {
+        answer = true;
+      }
+    }
+    return answer;
   }
 
   openPopUp(file: string) {
