@@ -74,6 +74,7 @@ export class GameComponent implements OnInit {
       this.isProcessing = false;
     }, 1000);
   }
+  
   openPopUp(file: string) {
     this.jsonService.loadData(file).subscribe((data) => {
       this.jsonContent = data; 
