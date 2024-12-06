@@ -134,7 +134,7 @@ export class IAComponent {
   flip_card(card : Card){
     card.isFlipped = true;
     this.flippedCards.push(card);
-    if (Math.random() > 0.1){
+    if (Math.random() > 0.15){
       if (!this.is_in_ia(card)){
         this.ia_tab.push(card);
         console.log(this.ia_tab);
