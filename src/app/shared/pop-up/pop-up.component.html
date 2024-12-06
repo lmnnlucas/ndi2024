@@ -7,7 +7,7 @@
   
   <h2>{{ content?.title ?? 'Titre par défaut' }}</h2>
 
-  <div *ngIf="content">
+  <div *ngIf="content" class="popup-content">
     <p>{{ content?.text ?? 'Texte par défaut : Aucune information disponible.' }}</p>
   </div>
 

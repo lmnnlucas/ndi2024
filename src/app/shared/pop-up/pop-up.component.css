@@ -16,6 +16,17 @@
   opacity: 1;
 }
 
+
+.popup-content {
+  @media screen and (max-width: 768px) {
+    width: 80vw;
+    max-height: 60vh;
+    overflow-y: auto;
+    overflow-x: hidden;
+  }
+ 
+}
+
 .popup {
   position: fixed;
   top: 50%;
@@ -28,6 +39,15 @@
   z-index: 20;
   display: none;
   transition: opacity 0.3s ease-in-out;
+  font-size: 1rem;
+  @media screen and (max-width: 768px) {
+    font-size: 0.7rem;
+    width: 80vw;
+    max-height: 80vh;
+    overflow-y: auto;
+    overflow-x: hidden;
+    
+  }
 }
 
 .popup.show-popup {
@@ -52,6 +72,10 @@ h2 {
   text-align: center; /* Centrer le titre */
   font-size: 1.5rem;
   margin: 10px 0;
+  @media screen and (max-width: 768px) {
+    font-size: 1rem;
+    
+  }
 }
 
 button {
