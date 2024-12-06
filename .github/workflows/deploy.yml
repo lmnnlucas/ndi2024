@@ -47,7 +47,7 @@ jobs:
           key: ${{ secrets.sshkey }}
           port: 22
           script: |
-            docekr run -d -p 8080:80 --name NDI ndi
+            docker run -d -p 8080:80 --name NDI ndi
       
 
           
