@@ -1,6 +1,7 @@
 import { Component, OnInit, ViewChild } from '@angular/core';
 import { Card } from '../../models/card.model'; // Assurez-vous d'avoir défini ce modèle
 import { CommonModule } from '@angular/common';
+import { CardPlayableComponent } from '../../shared/card-playable/card-playable.component'
 import { PopupComponent } from '../../shared/pop-up/pop-up.component'; 
 import { JsonDataService } from '../../shared/json-data/json-data.service';
 
@@ -9,7 +10,7 @@ import { JsonDataService } from '../../shared/json-data/json-data.service';
   templateUrl: './game.component.html',
   standalone: true,
   styleUrls: ['./game.component.css'],
-  imports: [CommonModule , PopupComponent]
+  imports: [CommonModule , CardPlayableComponent, PopupComponent ]
 })
 export class GameComponent implements OnInit {
   @ViewChild(PopupComponent) popup!: PopupComponent;
@@ -25,14 +26,15 @@ export class GameComponent implements OnInit {
   }
 
   initializeGame() {
-    const values = ['🍎', '🍌', '🍇', '🍓', '🍍', '🥝', '🍉', '🍒']; // Exemple de valeurs
+    const values = [1, 2, 3, 4, 5, 6, 7, 8]; // Exemple de valeurs
     const deck = [...values, ...values] // Duplique les cartes
       .map((value, index) => ({
         id: index,
-        value,
         isFlipped: false,
-        isMatched: false
-      }));
+        isMatched: false,
+        variant: index < 8 ? 'b' : 'a', // Si l'index est <= 8, 'a', sinon 'b'
+        background : value
+      } as Card ));
 
     this.cards = this.shuffle(deck);
   }
@@ -57,7 +59,7 @@ export class GameComponent implements OnInit {
 
     const [card1, card2] = this.flippedCards;
 
-    if (card1.value === card2.value) {
+    if (card1.background === card2.background) {
       card1.isMatched = true;
       card2.isMatched = true;
     } else {
