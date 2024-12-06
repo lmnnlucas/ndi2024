@@ -4,12 +4,13 @@ import { CommonModule } from '@angular/common';
 import { CardPlayableComponent } from '../../shared/card-playable/card-playable.component';
 import { PopupComponent } from '../../shared/pop-up/pop-up.component';
 import { JsonDataService } from '../../shared/json-data/json-data.service';
+import { RouterModule } from '@angular/router';
 
 @Component({
   selector: 'app-game',
   templateUrl: './game.component.html',
   styleUrls: ['./game.component.css'],
-  imports: [CommonModule, CardPlayableComponent, PopupComponent],
+  imports: [CommonModule, CardPlayableComponent, PopupComponent, RouterModule],
   standalone:true
 })
 export class GameComponent implements OnInit {

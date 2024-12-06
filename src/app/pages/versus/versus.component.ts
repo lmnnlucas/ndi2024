@@ -4,13 +4,14 @@ import { CommonModule } from '@angular/common';
 import { CardPlayableComponent } from '../../shared/card-playable/card-playable.component'
 import { PopupComponent } from '../../shared/pop-up/pop-up.component'; 
 import { JsonDataService } from '../../shared/json-data/json-data.service';
+import { RouterModule } from '@angular/router';
 
 @Component({
   selector: 'app-versus',
   standalone: true,
   templateUrl: './versus.component.html',
   styleUrl: './versus.component.css',
-  imports: [CommonModule , CardPlayableComponent, PopupComponent ]
+  imports: [CommonModule , CardPlayableComponent, PopupComponent, RouterModule ]
 })
 export class VersusComponent {
   @ViewChild(PopupComponent) popup!: PopupComponent;
