@@ -5,10 +5,10 @@
         <img [src]="getIconUrl()" alt="Icône associée" class="icon-image">
       </div>
       <div class="image-container">
-        <img src="https://via.placeholder.com/100" alt="Image principale de la carte">
+        <img [src]="getImageUrl()" alt="Image principale de la carte">
       </div>
       <div class="card-title">
-        <p>Titre</p>
+        <p>{{ getTitre() }}</p> <!-- Afficher le titre récupéré -->
       </div>
     </div>
   
