@@ -1,5 +1,10 @@
 <div class="popup-backdrop" [class.show-backdrop]="isVisible" (click)="closePopup()"></div>
 <div class="popup" [class.show-popup]="isVisible">
+  <div class="popup-header">
+    <img *ngIf="content?.image1" [src]="content?.image1" alt="Image 1" class="popup-image">
+    <img *ngIf="content?.image2" [src]="content?.image2" alt="Image 2" class="popup-image">
+  </div>
+  
   <h2>{{ content?.title ?? 'Titre par défaut' }}</h2>
 
   <div *ngIf="content">
