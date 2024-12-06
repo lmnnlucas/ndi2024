@@ -1,0 +1,23 @@
+/* Conteneur principal */
+.card-section {
+    display: flex; /* Utilisation de flexbox pour la mise en page */
+    justify-content: space-between; /* Espacement entre les sections */
+    flex-wrap: wrap; /* Permet de passer à la ligne suivante si nécessaire */
+    gap: 20px; /* Espacement entre les colonnes */
+    padding: 20px; /* Espacement autour du conteneur */
+  }
+  
+  /* Chaque section contenant les cartes */
+  .section {
+    flex: 1; /* Chaque section prend un espace égal */
+    display: flex;
+    flex-direction: column; /* Alignement des cartes en colonne */
+    gap: 10px; /* Espacement entre les cartes */
+  }
+  
+  /* Vous pouvez également ajuster la taille des cartes si nécessaire */
+  app-card-playable {
+    width: 100%; /* La carte prend toute la largeur de son parent */
+    max-width: 150px; /* Largeur maximale pour les cartes */
+    margin: 0 auto; /* Centrage des cartes */
+  }
