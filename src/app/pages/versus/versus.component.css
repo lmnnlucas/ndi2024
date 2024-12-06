@@ -1,22 +1,35 @@
 .memory-game {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 10px;
+  justify-items: center;
+  @media screen and (max-width: 768px) {
     display: grid;
-    grid-template-columns: repeat(4, 1fr);
-    gap: 10px;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 5px;
     justify-items: center;
   }
-  
-  .card-container {
-    width: 100px;
-    height: 220px;
+  button {
+    @media screen and (max-width: 768px) {
+      grid-column: span 2;
+      width: 100%;
+      margin-right: 10px;
+    }
   }
+}
 
   /* Bandeau des joueurs */
 .player-banner {
     display: flex;
     justify-content: space-between;
     padding: 10px;
-    background-color: #f4f4f4;
-    border-bottom: 2px solid #ccc;
+    background-color: #3a4c70;
+    border-bottom: 2px solid #5FC2BA;
+    margin-bottom: 20px;
+    @media screen and (max-width: 768px) {
+      height: 7rem;
+      
+    }
   }
   
   .player {
@@ -29,9 +42,10 @@
   }
   
   .player.active-player {
-    border-color: #007bff; /* Couleur pour le joueur actif */
+    border-color: #5FC2BA;
+    border-width: 3px; /* Couleur pour le joueur actif */
     font-weight: bold;
-    background-color: #e9f5ff; /* Couleur de fond pour indiquer l'activité */
+    /* background-color: #e9f5ff; Couleur de fond pour indiquer l'activité */
   }
   
   /* Cadre du contenu principal */
