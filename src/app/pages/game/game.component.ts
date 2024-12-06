@@ -1,34 +1,37 @@
 import { Component, OnInit, ViewChild } from '@angular/core';
-import { Card } from '../../models/card.model'; // Assurez-vous d'avoir défini ce modèle
+import { Card } from '../../models/card.model';
 import { CommonModule } from '@angular/common';
 import { CardPlayableComponent } from '../../shared/card-playable/card-playable.component';
 import { PopupComponent } from '../../shared/pop-up/pop-up.component';
 import { JsonDataService } from '../../shared/json-data/json-data.service';
+import { GameModeService } from '../../shared/gameModeService';  // Importer le service
+import { pipe } from 'rxjs';
 
 @Component({
   selector: 'app-game',
   templateUrl: './game.component.html',
   styleUrls: ['./game.component.css'],
   imports: [CommonModule, CardPlayableComponent, PopupComponent],
-  standalone:true
+  standalone: true
 })
 export class GameComponent implements OnInit {
-  @ViewChild(PopupComponent) popup!: PopupComponent; // Référence du PopupComponent
+  @ViewChild(PopupComponent) popup!: PopupComponent;
   jsonContent: any;
   cards: Card[] = [];
   flippedCards: Card[] = [];
   isProcessing: boolean = false;
-  popupContent: { title: string; text: string; image1:string; image2: string } | null = null;
+  popupContent: { title: string; text: string; image1: string; image2: string } | null = null;
 
-  constructor(private jsonService: JsonDataService) {}
+  constructor(
+    private jsonService: JsonDataService,
+    private gameModeService: GameModeService  // Injecter le service
+  ) {}
 
   ngOnInit() {
-    // Charger les données du JSON sans ouvrir le pop-up
     this.loadCardDescriptions();
     this.initializeGame();
   }
 
-  // Charger le contenu du JSON contenant les descriptions des cartes
   loadCardDescriptions() {
     this.jsonService.loadData('description-association-card.json').subscribe((data) => {
       this.jsonContent = data;
@@ -37,6 +40,7 @@ export class GameComponent implements OnInit {
 
   initializeGame() {
     const values = [1, 2, 3, 4, 5, 6, 7, 8];
+    console.log(this.gameModeService.getPixelMode());
     const deck = [...values, ...values]
       .map((value, index) => ({
         id: index,
@@ -44,6 +48,7 @@ export class GameComponent implements OnInit {
         isMatched: false,
         variant: index < 8 ? 'b' : 'a',
         background: value,
+        pixel: this.gameModeService.getPixelMode(),  // Utiliser l'état du mode pixelisé
       } as Card));
 
     this.cards = this.shuffle(deck);
@@ -72,10 +77,7 @@ export class GameComponent implements OnInit {
       card1.isMatched = true;
       card2.isMatched = true;
 
-      // Récupérer le titre et le texte du JSON pour le card1.background
       const cardDescription = this.jsonContent[card1.background];
-
-      // Mettre à jour le pop-up avec le contenu du JSON
       this.popupContent = {
         title: cardDescription?.title ?? 'Match trouvé!',
         text: cardDescription?.text ?? 'Félicitations! Vous avez trouvé une paire.',
@@ -83,9 +85,8 @@ export class GameComponent implements OnInit {
         image2: cardDescription?.image2 ?? ''
       };
 
-      // Ouvrir la pop-up seulement après un match
       if (this.popup) {
-        this.popup.openPopup(); // Cette ligne ouvrira la pop-up
+        this.popup.openPopup();
       }
     } else {
       setTimeout(() => {
@@ -100,15 +101,13 @@ export class GameComponent implements OnInit {
     }, 1000);
   }
 
-  // Fonction pour fermer le pop-up
   closePopup() {
     if (this.popup) {
       this.popup.closePopup();
     }
   }
-  
+
   resetGame() {
     this.initializeGame();
   }
 }
-

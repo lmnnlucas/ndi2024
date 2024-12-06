@@ -1,51 +1,83 @@
 {
     "1-a": {
-      "name": "Courant marin"
+      "name": "Courant marin",
+      "image":"./img-card/1-a.png",
+      "imagePxl":"./img-card/1-a_pxl.png"
     },
     "1-b": {
-      "name": "Coeur"
+      "name": "Coeur",
+      "image":"./img-card/1-b.png",
+      "imagePxl":"./img-card/1-b_pxl.png"
     },
     "2-a": {
-      "name": "Plancton"
+      "name": "Plancton",
+      "image":"./img-card/2-a.png",
+      "imagePxl":"./img-card/2-a_pxl.png"
     },
     "2-b": {
-      "name": "Poumons"
+      "name": "Poumons",
+      "image":"./img-card/2-b.png",
+      "imagePxl":"./img-card/2-b_pxl.png"
     },
     "3-a": {
-      "name": "Corail"
+      "name": "Corail",
+      "image":"./img-card/3-a.png",
+      "imagePxl":"./img-card/3-a_pxl.png"
     },
     "3-b": {
-      "name": "reins"
+      "name": "reins",
+      "image":"./img-card/3-b.png",
+      "imagePxl":"./img-card/3-b_pxl.png"
     },
     "4-a": {
-      "name": "Surface de l'eau"
+      "name": "Surface de l'eau",
+      "image":"./img-card/4-a.png",
+      "imagePxl":"./img-card/4-a_pxl.png"
     },
     "4-b": {
-      "name": "Peau"
+      "name": "Peau",
+      "image":"./img-card/4-b.png",
+      "imagePxl":"./img-card/4-b_pxl.png"
     },
     "5-a": {
-      "name": "Chain alimentaire"
+      "name": "Chaine alimentaire",
+      "image":"./img-card/5-a.png",
+      "imagePxl":"./img-card/5-a_pxl.png"
     },
     "5-b": {
-      "name": "Cerveau"
+      "name": "Cerveau",
+      "image":"./img-card/5-b.png",
+      "imagePxl":"./img-card/5-b_pxl.png"
     },
     "6-a": {
-      "name": "Cycle de l'eau"
+      "name": "Cycle de l'eau",
+      "image":"./img-card/6-a.png",
+      "imagePxl":"./img-card/6-a_pxl.png"
     },
     "6-b": {
-      "name": "Hydratation"
+      "name": "Hydratation",
+      "image":"./img-card/6-b.png",
+      "imagePxl":"./img-card/6-b_pxl.png"
     },
     "7-a": {
-      "name": "Sedimentation"
+      "name": "Sedimentation",
+      "image":"./img-card/7-a.png",
+      "imagePxl":"./img-card/7-a_pxl.png"
     },
     "7-b": {
-      "name": "Intestin"
+      "name": "Intestin",
+      "image":"./img-card/7-b.png",
+      "imagePxl":"./img-card/7-b_pxl.png"
     },
     "8-a": {
-      "name": "Ecosysteme"
+      "name": "Ecosysteme",
+      "image":"./img-card/8-a.png",
+      "imagePxl":"./img-card/8-a_pxl.png"
     },
     "8-b": {
-      "name": "Systeme Imunitaire"
+      "name": "Systeme Imunitaire",
+      "image":"./img-card/8-b.png",
+      "imagePxl":"./img-card/8-b_pxl.png"
     }
   }
   

@@ -4,6 +4,8 @@ import { CommonModule } from '@angular/common';
 import { CardPlayableComponent } from '../../shared/card-playable/card-playable.component'
 import { PopupComponent } from '../../shared/pop-up/pop-up.component'; 
 import { JsonDataService } from '../../shared/json-data/json-data.service';
+import { GameModeService } from '../../shared/gameModeService';  // Importer le service
+
 
 @Component({
   selector: 'app-ia',
@@ -23,7 +25,8 @@ export class IAComponent {
   flippedCards: Card[] = [];
   isProcessing: boolean = false;
 
-  constructor(private jsonService: JsonDataService) {}
+  constructor(private jsonService: JsonDataService, private gameModeService: GameModeService  // Injecter le service
+  ) {}
 
   ngOnInit() {
     this.initializeGame();
@@ -37,7 +40,8 @@ export class IAComponent {
         isFlipped: false,
         isMatched: false,
         variant: index < 8 ? 'b' : 'a', // Si l'index est <= 8, 'a', sinon 'b'
-        background : value
+        background : value,
+        pixel: this.gameModeService.getPixelMode(),  // Utiliser l'état du mode pixelisé
       } as Card ));
 
     this.cards = this.shuffle(deck);
