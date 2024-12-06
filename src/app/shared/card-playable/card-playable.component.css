@@ -1,15 +1,22 @@
 /* Styles globaux */
 .card {
-    width: 200px;
-    height: 200px;
+    width: 10rem;
+    max-width: 25vw;
+    height: 10rem;
+    max-height: 25vw;
     border-radius: 15px;
     box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
     display: flex;
     flex-direction: column;
     align-items: center;
     justify-content: center;
-    position: relative;
     overflow: hidden;
+    @media screen and (max-width: 768px) {
+      width: 15rem;
+      height: 15rem; 
+      max-width: 26vw;
+      max-height: 26vw;
+    }
   }
 
 /* Face de la carte */
@@ -67,26 +74,28 @@
     background-color: #ffc6ff;
 }
 
-.icons {
-    position: absolute;
-    top: 10px;
-    left: 10px;
+.icons{
+  align-self: start;
+  margin-top: 0.5rem;
+  margin-left: 0.5rem;
 }
 
 .icon-image {
     width: 30px;
     height: 30px;
-    object-fit: contain; 
+    /* object-fit: contain; */
+    @media screen and (max-width: 768px) {
+      width: 15px;
+      height: 15px;   
+    }
 }
 
 /* Conteneur pour l'image */
 .image-container {
-    position: absolute; /* Position absolue pour le placer au centre */
-    top: 45%; /* Centrage vertical */
-    left: 50%; /* Centrage horizontal */
-    transform: translate(-50%, -50%); /* Déplacement du cercle pour centrer exactement */
-    width: 150px;
-    height: 150px;
+    margin-top: -0.5rem;
+    aspect-ratio: 1/1;
+    width: fit-content;
+    height: max-content;
     background-color: white;
     border-radius: 50%;
     display: flex;
@@ -94,13 +103,16 @@
     justify-content: center;
     overflow: hidden;
     border: 2px solid #ddd;
-  }
+    @media screen and (max-width: 768px) {
+      aspect-ratio: 1/1;
+      height: max-content
+    }        
+}
   
 .image-container img {
-    width: 80%;
-    height: 80%;
-    object-fit: cover;
-    border-radius: 50%;
+    width: 100%;
+    height: 100%;
+    object-fit:scale-down;
 }
 
 .back-image {
@@ -111,9 +123,12 @@
 
   /* Titre sous l'image */
 .card-title {
-    margin-top: 78%; /* Espacement entre l'image et le titre */
-    font-size: 16px;
+    font-size: 1rem;
     text-align: center;
     color: #333;
+    @media screen and (max-width: 768px) {
+      font-size: 0.65rem;
+      text-wrap: nowrap
+    }
   }
   
