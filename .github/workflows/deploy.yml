@@ -1,0 +1,31 @@
+on:
+  push:
+    branches:
+      - "main"
+      
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Get SSH key
+        run: |
+           mkdir -p ~/.ssh
+           echo "${{ secrets.sshkey }}" > ~/.ssh/id_rsa
+           chmod 600 ~/.ssh/id_rsa
+           
+      - name: Pull on remote
+        run: |
+          ssh root@46.101.135.20 "cd ndi2024; git pull"
+
+      - name: Delete container
+        run: |
+          ssh root@46.101.135.20 "docker rm ndi"
+
+      - name: Build image
+        run: |
+          ssh root@46.101.135.20 "cd ndi2024; docker build . -t ndi"
+
+
+      - name: Run container
+        run: |
+            ssh root@46.101.135.20 "docker run -d -p 8080:80 --name NDI ndi
