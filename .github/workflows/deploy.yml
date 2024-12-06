@@ -18,4 +18,40 @@ jobs:
           script: |
             cd ndi2024
             git pull
+
+      - name: Docker delete container
+        uses: appleboy/ssh-action@v1.2.0
+        with:
+          host: 46.101.135.20
+          username: root
+          key: ${{ secrets.sshkey }}
+          port: 22
+          script: |
+            docker rm NDI
+
+      - name: Docker build image
+        uses: appleboy/ssh-action@v1.2.0
+          with:
+            host: 46.101.135.20
+            username: root
+            key: ${{ secrets.sshkey }}
+            port: 22
+            script: |
+              cd ndi2024
+              docker build . -t ndi
+              
+      - name: Docker Run container
+        uses: appleboy/ssh-action@v1.2.0
+          with:
+            host: 46.101.135.20
+            username: root
+            key: ${{ secrets.sshkey }}
+            port: 22
+            script: |
+              docekr run -d -p 8080:80 --name NDI ndi
+      
+
+          
+
+          
            
