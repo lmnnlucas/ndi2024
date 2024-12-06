@@ -5,14 +5,14 @@ import { CardPlayableComponent } from '../../shared/card-playable/card-playable.
 import { PopupComponent } from '../../shared/pop-up/pop-up.component'; 
 import { JsonDataService } from '../../shared/json-data/json-data.service';
 import { GameModeService } from '../../shared/gameModeService';  // Importer le service
-
+import { RouterModule } from '@angular/router';
 
 @Component({
   selector: 'app-ia',
   standalone: true,
   templateUrl: './ia.component.html',
   styleUrl: './ia.component.css',
-  imports: [CommonModule , CardPlayableComponent, PopupComponent ]
+  imports: [CommonModule , CardPlayableComponent, PopupComponent, RouterModule ]
 })
 export class IAComponent {
   @ViewChild(PopupComponent) popup!: PopupComponent;
@@ -138,7 +138,7 @@ export class IAComponent {
   flip_card(card : Card){
     card.isFlipped = true;
     this.flippedCards.push(card);
-    if (Math.random() > 0.1){
+    if (Math.random() > 0.15){
       if (!this.is_in_ia(card)){
         this.ia_tab.push(card);
         console.log(this.ia_tab);
