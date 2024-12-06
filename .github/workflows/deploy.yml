@@ -14,6 +14,8 @@ jobs:
           host: 46.101.135.20
           username: root
           key: ${{ secrets.sshkey }}
-          port: 80
-          script: "cd ndi2024; git pull"
+          port: 22
+          script: |
+            cd ndi2024
+            git pull
            
