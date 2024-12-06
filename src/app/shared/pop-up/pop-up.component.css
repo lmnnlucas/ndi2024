@@ -12,7 +12,7 @@
 }
 
 .popup-backdrop.show-backdrop {
-  display: block; 
+  display: block;
   opacity: 1;
 }
 
@@ -21,16 +21,98 @@
   top: 50%;
   left: 50%;
   transform: translate(-50%, -50%);
-  background: white;
+  background: #e0f7fa;
   padding: 20px;
   border-radius: 8px;
   box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
   z-index: 20;
-  display: none; 
+  display: none;
   transition: opacity 0.3s ease-in-out;
+  width: 80%; /* Réduire la largeur par défaut pour mieux s'adapter sur les petits écrans */
+  max-width: 400px; /* Réduire la largeur maximale */
 }
 
 .popup.show-popup {
   display: block;
   opacity: 1;
+}
+
+.popup-header {
+  display: flex;
+  justify-content: center; /* Aligne les images horizontalement */
+  gap: 10px; /* Espacement entre les images */
+  margin-bottom: 10px; /* Marge entre les images et le titre */
+  flex-wrap: wrap; /* Permet aux images de se replier en cas de petite taille d'écran */
+}
+
+.popup-image {
+  width: 50px; /* Ajuster la taille des images */
+  height: 50px;
+  object-fit: contain;
+}
+
+h2 {
+  text-align: center; /* Centrer le titre */
+  font-size: 1.4rem; /* Réduire la taille du titre */
+  margin: 10px 0;
+}
+
+button {
+  display: block;
+  width: 80%; /* Rendre le bouton plus large sur mobile */
+  padding: 12px;
+  margin: 20px auto 0; /* Centrer le bouton et ajouter de l'espace au-dessus */
+  background-color: #5FC2BA;
+  color: #e0f7fa;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+}
+
+button:hover {
+  background-color: #4da19a;
+}
+
+/* Media Queries pour les appareils mobiles */
+@media (max-width: 600px) {
+  .popup {
+    width: 90%; /* Rendre la pop-up encore plus petite sur les petits écrans */
+    padding: 15px; /* Réduire le padding */
+  }
+
+  .popup-image {
+    width: 45px; /* Réduire la taille des images */
+    height: 45px;
+  }
+
+  h2 {
+    font-size: 1.2rem; /* Réduire la taille du titre */
+  }
+
+  button {
+    width: 80%; /* Rendre le bouton plus large sur mobile */
+    padding: 12px; /* Réduire la taille du bouton */
+  }
+}
+
+/* Media Queries pour les très petits écrans */
+@media (max-width: 400px) {
+  .popup {
+    width: 95%; /* Augmenter la largeur sur les très petits écrans */
+    padding: 10px;
+  }
+
+  .popup-image {
+    width: 40px; /* Réduire encore la taille des images */
+    height: 40px;
+  }
+
+  h2 {
+    font-size: 1.1rem; /* Taille du titre plus petite */
+  }
+
+  button {
+    width: 85%; /* Bouton plus large sur les très petits écrans */
+    padding: 14px;
+  }
 }
