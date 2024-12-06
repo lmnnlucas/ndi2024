@@ -1,0 +1,53 @@
+.memory-game {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 10px;
+    justify-items: center;
+  }
+  
+  .card-container {
+    width: 100px;
+    height: 220px;
+  }
+
+  /* Bandeau des joueurs */
+.player-banner {
+    display: flex;
+    justify-content: space-between;
+    padding: 10px;
+    background-color: #f4f4f4;
+    border-bottom: 2px solid #ccc;
+  }
+  
+  .player {
+    flex: 1;
+    text-align: center;
+    font-size: 1.2rem;
+    padding: 10px;
+    border: 1px solid transparent;
+    border-radius: 5px;
+  }
+  
+  .player.active-player {
+    border-color: #007bff; /* Couleur pour le joueur actif */
+    font-weight: bold;
+    background-color: #e9f5ff; /* Couleur de fond pour indiquer l'activité */
+  }
+  
+  /* Cadre du contenu principal */
+  .game-container {
+    padding: 20px;
+    margin: 10px;
+    border: 3px solid transparent;
+    border-radius: 10px;
+    transition: border-color 0.3s ease;
+  }
+  
+  /* Couleurs pour le joueur actif */
+  .game-container.active-player-1 {
+    border-color: #007bff;
+  }
+  
+  .game-container.active-player-2 {
+    border-color: #ff4500;
+  }

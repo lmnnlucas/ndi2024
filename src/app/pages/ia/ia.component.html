@@ -1,0 +1,24 @@
+<div class="player-banner">
+    <div class="player" [ngClass]="{'active-player': activePlayer === 1}">
+      <p>Joueur 1</p>
+      <p>Points : {{ player1Points }}</p>
+    </div>
+    <div class="player" [ngClass]="{'active-player': activePlayer === 2}">
+      <p>IA</p>
+      <p>Points : {{ player2Points }}</p>
+    </div>
+  </div>
+
+<div class="memory-game">
+    <div *ngFor="let card of cards" class="card-container">
+      <app-card-playable
+        [variant]="card.variant"
+        [isFaceUp]="card.isFlipped"
+        [backgroundType]="card.background"
+        (click)="onCardClick(card)">
+      </app-card-playable>
+    </div>
+    <button (click)="openPopUp('test1.json')">Reset</button>
+  </div>
+
+  <popup [content]="jsonContent"></popup>
